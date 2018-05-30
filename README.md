@@ -31,4 +31,21 @@ The papers which we will be going to focus more are :
 
 # 2.Approches
 
+The steps that we are going to take to build the model are as follows:
+
+	1. Load the audio file.
+	2. Transform the audio signal using FFT.
+	3. Extract meaningful features.
+	4. create the dataset.
+	5. cleaning the dataset.
+	6. scaling the dataset.
+	7. Building Neural Nets.
+	8. Training the model.
+	9. Accuracy calculation.
+	10.Performance tuning.
+	11.Deploying the Model.
+
+# 3.Data collection and Preprocessing
+
+
 
