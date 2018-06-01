@@ -5,6 +5,8 @@ import pandas as pd
 import math
 import cmath
 import re
+import scipy
+from scipy import signal
 from scipy.io import wavfile
 from matplotlib import pyplot as plt
 import time
@@ -22,7 +24,7 @@ class Extract(object):
 		owd = os.getcwd()
 
 		#setting path to dataset
-		self.path = str('Datasets/pygender/Train/AudioSet/')
+		self.path = str('Datasets/pygender/Test/youtube/')
 
 		#list of categorical dataset
 		listdata = os.listdir(self.path)
@@ -37,20 +39,28 @@ class Extract(object):
 
 			#loading each audio file for fft transformation
 			for i in os.listdir():
+				print(i)
 				samplerate, data = wavfile.read(i)
-				print(data)
+				N = data.shape[0]
+				secs = N / float(samplerate)
+				Ts = 1.0/samplerate # sampling interval in time
+				t = scipy.arange(0, secs, Ts) # time vector as scipy arange field / numpy.ndarray
+				data = np.fft.fft(data)
+				freqs = scipy.fftpack.fftfreq(data.size, t[1]-t[0])
+				print(freqs.mean())
 
+				
 			#going back to default directory
 			os.chdir(owd)
 
-	#defing omega for FFT
+	#defining omega for FFT
 	@classmethod
 	def omega(self,p, q):
 		return cmath.exp((2.0 * cmath.pi * 1j * q) / p)
 
 	#actual defination for Fast fourier Transformation (FFT)
 	@classmethod
-	def fft(signal):
+	def fft(self,signal):
 
 		#length of the signal
 		n = len(signal)
@@ -58,14 +68,14 @@ class Extract(object):
 			return signal
 		else:
 			#splitting into even and odd set
-			Feven = fft([signal[i] for i in range(0, n, 2)])
-			Fodd = fft([signal[i] for i in range(1, n, 2)])
+			Feven = self.fft([signal[i] for i in range(0, n, 2)])
+			Fodd = self.fft([signal[i] for i in range(1, n, 2)])
 
  		#combining the both list
 		combined = [0] * n
 		for m in range(n//2):
-		combined[m] = Feven[m] + self.omega(n, -m) * Fodd[m]
-		combined[m + n/2] = Feven[m] - self.omega(n, -m) * Fodd[m]
+			combined[m] = Feven[m] + self.omega(n, -m) * Fodd[m]
+			combined[m + n//2] = Feven[m] - self.omega(n, -m) * Fodd[m]
  		
 		#returning while converting list to numpy array
 		return np.array(combined)
