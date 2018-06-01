@@ -41,17 +41,40 @@ class Extract(object):
 			for i in os.listdir():
 				print(i)
 				samplerate, data = wavfile.read(i)
-				N = data.shape[0]
-				secs = N / float(samplerate)
-				Ts = 1.0/samplerate # sampling interval in time
-				t = scipy.arange(0, secs, Ts) # time vector as scipy arange field / numpy.ndarray
 				data = np.fft.fft(data)
-				freqs = scipy.fftpack.fftfreq(data.size, t[1]-t[0])
-				print(freqs.mean())
-
+				data = abs(data)
+				frequency = self.freqcalc(data, samplerate)
+				meanfreq = abs(frequency.mean())
+				meanstd = self.std(frequency)
+				med = self.median(frequency)
+				print(meanfreq, abs(meanstd), abs(med))
 				
 			#going back to default directory
 			os.chdir(owd)
+
+	#calculating median
+	@classmethod
+	def median(self, frequencies):
+	
+		return (np.median(frequencies))
+
+	#calculating standard deviation
+	@classmethod
+	def std(self, frequencies):
+
+		return (np.std(frequencies))
+
+	#calculating frequency
+	@classmethod
+	def freqcalc(self, data, samplerate):
+
+		N = data.shape[0]
+		secs = N / float(samplerate)
+		Ts = 1.0/samplerate # sampling interval in time
+		t = scipy.arange(0, secs, Ts) # time vector as scipy arange field / numpy.ndarray
+		freqs = scipy.fftpack.fftfreq(data.size, t[1]-t[0])
+	
+		return 	(freqs)
 
 	#defining omega for FFT
 	@classmethod
