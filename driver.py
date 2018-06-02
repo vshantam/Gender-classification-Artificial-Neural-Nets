@@ -26,7 +26,7 @@ class Extract(object):
 		owd = os.getcwd()
 
 		#setting path to dataset
-		self.path = str('Datasets/pygender/Test/youtube/')
+		self.path = str('Datasets/pygender/Train/AudioSet/')
 
 		#list of categorical dataset
 		listdata = os.listdir(self.path)
@@ -45,12 +45,16 @@ class Extract(object):
 
 				print(j)
 				samplerate, data = wavfile.read(j)
+				data = self.fft(data)
 				data = abs(data)
 				frequency = self.freqcalc(data, samplerate)
 				meanfreq = abs(frequency.mean())
 				meanstd = self.std(data)
 				med = self.median(data)
-				mode = statistics.mode(data)
+				try:
+					mode = statistics.mode(data)
+				except Exception as e:
+					mode = 0.0
 				q75, q25, iqr = self.quart(data)
 				kurtosis, skew, entropy = self.kurtskew(data)
 				sfm = self.specflat(data)
@@ -63,7 +67,7 @@ class Extract(object):
 				f.write(str(kurtosis));f.write(",");f.write(str(skew));f.write(",");f.write(str(entropy));f.write(",")
 				f.write(str(sfm));f.write(",")
 				f.write(str(centroid));f.write(",")
-				if listdata[i] == "female":
+				if listdata[i] == "female_clips":
 					f.write("female");f.write("\n")
 				else:
 					f.write("male");f.write("\n");
@@ -157,4 +161,3 @@ if __name__ == '__main__':
 	obj = Extract()
 	obj.load_data()
 
-		
