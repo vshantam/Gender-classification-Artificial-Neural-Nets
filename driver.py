@@ -9,7 +9,9 @@ import scipy
 from scipy import signal
 from scipy.io import wavfile
 from matplotlib import pyplot as plt
-import time
+import statistics
+from scipy.stats.mstats import gmean
+from scipy.stats import kurtosis, skew, entropy
 
 #creating class for feature extraction
 class Extract(object):
@@ -28,6 +30,7 @@ class Extract(object):
 
 		#list of categorical dataset
 		listdata = os.listdir(self.path)
+		f = open(owd+"/data.csv", "a+")
 
 		print(listdata)
 		#looping through different dataset for male and female
@@ -38,21 +41,55 @@ class Extract(object):
 			print(listdata[i])
 
 			#loading each audio file for fft transformation
-			for i in os.listdir():
+			for j in os.listdir():
 
-				print(i)
-				samplerate, data = wavfile.read(i)
-				#data = np.fft.fft(data)
+				print(j)
+				samplerate, data = wavfile.read(j)
 				data = abs(data)
 				frequency = self.freqcalc(data, samplerate)
 				meanfreq = abs(frequency.mean())
-				meanstd = self.std(frequency)
-				med = self.median(frequency)
+				meanstd = self.std(data)
+				med = self.median(data)
+				mode = statistics.mode(data)
 				q75, q25, iqr = self.quart(data)
-				print(meanfreq, abs(meanstd), abs(med), q75, q25, iqr)
-				
+				kurtosis, skew, entropy = self.kurtskew(data)
+				sfm = self.specflat(data)
+				centroid = np.sum(data*frequency) / np.sum(data)				
+				f.write(str(meanfreq));f.write(",")
+				f.write(str(meanstd));f.write(",")
+				f.write(str(med));f.write(",")
+				f.write(str(mode));f.write(",")
+				f.write(str(q75));f.write(",");f.write(str(q25));f.write(",");f.write(str(iqr));f.write(",")
+				f.write(str(kurtosis));f.write(",");f.write(str(skew));f.write(",");f.write(str(entropy));f.write(",")
+				f.write(str(sfm));f.write(",")
+				f.write(str(centroid));f.write(",")
+				if listdata[i] == "female":
+					f.write("female");f.write("\n")
+				else:
+					f.write("male");f.write("\n");
+
 			#going back to default directory
 			os.chdir(owd)
+
+	#centriod frequency
+	@classmethod
+	def spectral_centroid(self, x, frequency):
+		freqs = np.abs(np.fft.fftfreq(length, 1.0/samplerate)[:length//2+1]) # positive frequencies		
+		return np.sum(x*frequency) / np.sum(data) # return weighted mean
+
+	#calculate spectral flatness
+	@classmethod
+	def specflat(self,data):
+	
+		res = gmean(data**2)/np.mean(data**2)
+		
+		return abs(res)
+
+	#kurtosis and skew
+	@classmethod
+	def kurtskew(self,data):
+
+		return kurtosis(data), skew(data), entropy(data)
 
 	#calculating quartile
 	@classmethod
