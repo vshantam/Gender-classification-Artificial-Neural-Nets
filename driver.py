@@ -45,7 +45,7 @@ class Extract(object):
 
 				print(j)
 				samplerate, data = wavfile.read(j)
-				data = self.fft(data)
+				data = scipy.fftpack.fft(data)
 				data = abs(data)
 				frequency = self.freqcalc(data, samplerate)
 				meanfreq = abs(frequency.mean())
