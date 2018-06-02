@@ -39,18 +39,28 @@ class Extract(object):
 
 			#loading each audio file for fft transformation
 			for i in os.listdir():
+
 				print(i)
 				samplerate, data = wavfile.read(i)
-				data = np.fft.fft(data)
+				#data = np.fft.fft(data)
 				data = abs(data)
 				frequency = self.freqcalc(data, samplerate)
 				meanfreq = abs(frequency.mean())
 				meanstd = self.std(frequency)
 				med = self.median(frequency)
-				print(meanfreq, abs(meanstd), abs(med))
+				q75, q25, iqr = self.quart(data)
+				print(meanfreq, abs(meanstd), abs(med), q75, q25, iqr)
 				
 			#going back to default directory
 			os.chdir(owd)
+
+	#calculating quartile
+	@classmethod
+	def quart(self,data):
+
+		q75, q25 = np.percentile(data, [75,25])
+		
+		return q75, q25, (q75-q25)
 
 	#calculating median
 	@classmethod
