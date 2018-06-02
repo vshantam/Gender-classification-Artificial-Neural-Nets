@@ -47,5 +47,7 @@ The steps that we are going to take to build the model are as follows:
 
 # 3.Data collection and Preprocessing
 
+I have uploaded the dataset that i used in the dataset forlder which contains two types of data.The first type of data is the actual audio data nad the second type of data is the the csv data whch contains the extracted features from real audio data.
+I will be shuffleing both the data after extraction of features.
 
 
