@@ -1,13 +1,15 @@
 import numpy as np
 import pandas as pd
 from sklearn import preprocessing
+from sklearn.preprocessing import MinMaxScaler
+import csv
 
 class Prep(object):
 
 	#loading dataset
 	@classmethod
 	def load(self,path):
-		self.df = pd.read_csv(path, engine = "python", header = None, sep = ",")
+		self.df = pd.read_csv(path, engine = "python", sep = ",")
 
 		return self.df
 
@@ -23,14 +25,19 @@ class Prep(object):
 	#encoding the dataset
 	@classmethod
 	def encoding(self):
-		self.x = self.df.iloc[:,:-1].values()
-		self.y = self.df.iloc[:,-1].values()
+		self.x = self.df.iloc[:,:-1].values
+		self.y = self.df.iloc[:,-1].values
 		le = preprocessing.LabelEncoder()
 		self.y = le.fit_transform(self.y)
 
-		return self.x, self,y
+		return self.x, self.y
 		
 
+	#saving preprocessed data
+	@classmethod
+	def savedata(self,x, y):
+		np.savetxt("PreProcessed_Data/input.csv",x,delimiter=",")
+		np.savetxt("PreProcessed_Data/output.csv",y,delimiter=",")
 
 if __name__ == "__main__":
 
@@ -38,4 +45,8 @@ if __name__ == "__main__":
 	df = obj.load("Datasets/voicegender(kaggle-extracted-dataset)/voice.csv")
 	df = obj.nanval()
 	x, y = obj.encoding()
-	
+	scaler = MinMaxScaler()
+	x = scaler.fit_transform(x)
+	obj.savedata(x,y)
+
+
