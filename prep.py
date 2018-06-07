@@ -46,7 +46,9 @@ class Prep(object):
 		maledf = df.loc[df['label'] == "male"] 
 		femaledf = df.loc[df['label'] == "female"]
 		name = df.columns
+
 		for i in name[:-1]:
+
 			plt.subplot(211)
 			plt.hist(maledf[i],label = "male", color = "green")
 			plt.legend(loc = "upper right")
@@ -55,7 +57,6 @@ class Prep(object):
 			plt.legend(loc = "upper right")
 			plt.suptitle("{} variation of male and female".format(i))
 			plt.savefig("Figures/"+str(i)+".png")
-
 
 if __name__ == "__main__":
 
