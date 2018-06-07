@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn import preprocessing
 from sklearn.preprocessing import MinMaxScaler
-import csv
+import matplotlib.pyplot as plt
 
 class Prep(object):
 
@@ -39,6 +39,24 @@ class Prep(object):
 		np.savetxt("PreProcessed_Data/input.csv",x,delimiter=",")
 		np.savetxt("PreProcessed_Data/output.csv",y,delimiter=",")
 
+	#visualization
+	@classmethod
+	def plot_viz(self):
+		df = self.df
+		maledf = df.loc[df['label'] == "male"] 
+		femaledf = df.loc[df['label'] == "female"]
+		name = df.columns
+		for i in name[:-1]:
+			plt.subplot(211)
+			plt.hist(maledf[i],label = "male", color = "green")
+			plt.legend(loc = "upper right")
+			plt.subplot(212)
+			plt.hist(femaledf[i],label="female", color= "orange")
+			plt.legend(loc = "upper right")
+			plt.suptitle("{} variation of male and female".format(i))
+			plt.savefig("Figures/"+str(i)+".png")
+
+
 if __name__ == "__main__":
 
 	obj = Prep()
@@ -48,5 +66,5 @@ if __name__ == "__main__":
 	scaler = MinMaxScaler()
 	x = scaler.fit_transform(x)
 	obj.savedata(x,y)
-
+	obj.plot_viz()
 
