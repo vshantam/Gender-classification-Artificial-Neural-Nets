@@ -8,7 +8,7 @@ This classifiers the gender of the person speaking in the singular audio file us
     2.Approches
     3.Data collection and Preprocessing
     4.signal Transformation
-    5.Feature Extraction
+    5.Feature Extraction and visualisation
     6.Training
     7.Testing
     8.Evaluation
@@ -49,5 +49,49 @@ The steps that we are going to take to build the model are as follows:
 
 I have uploaded the dataset that i used in the dataset forlder which contains two types of data.The first type of data is the actual audio data nad the second type of data is the the csv data whch contains the extracted features from real audio data.
 I will be shuffleing both the data after extraction of features.
+
+# 4.Signal Transformation
+
+Initially the data dataset contains all the audio files, so we need to transform each audio file in the folder using <B> FFT </B>.
+
+FFT IMPLEMENTATION IN PYTHON3
+
+		#defining omega for FFT
+		@classmethod
+		def omega(self,p, q):
+			return cmath.exp((2.0 * cmath.pi * 1j * q) / p)
+	
+		#actual defination for Fast fourier Transformation (FFT)
+		@classmethod
+		def fft(self,signal):
+	
+			#length of the signal
+			n = len(signal)
+			if n == 1:
+				return signal
+			else:
+				#splitting into even and odd set
+				Feven = self.fft([signal[i] for i in range(0, n, 2)])
+				Fodd = self.fft([signal[i] for i in range(1, n, 2)])
+
+ 			
+			combined = [0] * n #combining the both list
+			for m in range(n//2):
+				combined[m] = Feven[m] + self.omega(n, -m) * Fodd[m]
+				combined[m + n//2] = Feven[m] - self.omega(n, -m) * Fodd[m]
+ 			
+			#returning while converting list to numpy array
+			return np.array(combined)
+
+
+<b> sample audio plotting :</b>
+
+![alt_tag](Figures/audio.png)
+
+
+<b> sample audio plotting after transformation: </b>
+
+![alt_tag](Figures/audio_trans.png)
+
 
 
