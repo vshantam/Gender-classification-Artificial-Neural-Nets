@@ -86,8 +86,11 @@ FFT IMPLEMENTATION IN PYTHON3
 
 <b> sample audio plotting :</b>
 
+<b> Male vs Female </b>
+
 ![alt_tag](Figures/audio.png)
 
+<b> Male vs Female </b>
 
 <b> sample audio plotting after transformation: </b>
 
