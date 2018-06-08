@@ -150,7 +150,7 @@ References Used :
 
 ![alt_tag](Figures/Q25.png)
 
-![alt_tag](Figures/IRQ.png)
+![alt_tag](Figures/IQR.png)
 
 ![alt_tag](Figures/mode.png)
 
