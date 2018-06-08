@@ -2,9 +2,7 @@
 
 This classifiers the gender of the person speaking in the singular audio file using Artificial Neural Networks
 
-<b> Audio </b>
-
-![alt_tag](rgif.gif)
+<b> Audio </b>       ![alt_tag](rgif.gif)
 
 <b> Male/Female </b>
 
