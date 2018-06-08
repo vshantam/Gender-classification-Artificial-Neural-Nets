@@ -104,4 +104,42 @@ FFT IMPLEMENTATION IN PYTHON3
 ![alt_tag](Figures/audio_trans.png)
 
 
+# 5.Feature Extraction and visualisation
+
+The List of MFCC Features which i will be using are as follows :
+
+	1.Mean Frequency
+	2.Standard Devation
+	3.Median
+	4.Third Quartile (Q75)
+	5.First Quartile(Q25)
+	6.Inter Quartile(IQR)
+	7.Skewness
+	8.Kurtosis
+	9.Spectral Entropy
+	10.Spectral Flatness
+	11.Mode
+	12.Central Frequency
+
+
+	Q.What is MFCC ?
+
+	Ans:-Mel-frequency cepstral coefficients (MFCCs) are coefficients that collectively make up an MFC.
+	They are derived from a type of cepstral representation of the audio clip (a nonlinear "spectrum-of-
+	a-spectrum").
+
+References Used :
+
+<b>“The International Arab Journal of Information Technology, Vol. 10, No. 5, September 2013”</b>
+
+## Dataset Snapshot
+
+![alt_tag](Figures/dataset.png)
+
+## Extracted Feature
+
+![alt_tag](Figures/Features.png)
+
+## Visualization
+
 
