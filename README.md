@@ -142,4 +142,28 @@ References Used :
 
 ## Visualization
 
+![alt_tag](meanfreq.png)
+
+![alt_tag](median.png)
+
+![alt_tag](Q75.png)
+
+![alt_tag](Q25.png)
+
+![alt_tag](IRQ.png)
+
+![alt_tag](mode.png)
+
+![alt_tag](sd.png)
+
+![alt_tag](kurt.png)
+
+![alt_tag](sfm.png)
+
+![alt_tag](skew.png)
+
+![alt_tag](sp.ent.png)
+
+![alt_tag](centroid.png)
+
 
