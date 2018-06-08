@@ -80,8 +80,8 @@ class New_Toplevel:
                        ('active', _ana2color)])
 
         top.geometry('600x450+426+166')
-        top.title('New Toplevel')
-        top.configure(cursor='arrow')
+        top.title('/root/Grender-classification-Artificial-Neural-Nets/Figures/giphy.gif')
+        top.configure(bg="green",cursor='arrow')
 
         self.Frame1 = Frame(top)
         self.Frame1.place(relx=0.05, rely=0.09, relheight=0.17,
