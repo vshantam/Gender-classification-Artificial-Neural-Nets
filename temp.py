@@ -79,9 +79,9 @@ class New_Toplevel:
         self.style.map('.', background=[('selected', _compcolor),
                        ('active', _ana2color)])
 
-        top.geometry('600x450+426+166')
-        top.title('/root/Grender-classification-Artificial-Neural-Nets/Figures/giphy.gif')
-        top.configure(bg="green",cursor='arrow')
+        top.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
+        top.title('Classifier App')
+        top.configure(bg="black",cursor='arrow')
 
         self.Frame1 = Frame(top)
         self.Frame1.place(relx=0.05, rely=0.09, relheight=0.17,
@@ -89,7 +89,7 @@ class New_Toplevel:
         self.Frame1.configure(relief=GROOVE)
         self.Frame1.configure(borderwidth='2')
         self.Frame1.configure(relief=GROOVE)
-        self.Frame1.configure(width=555)
+        self.Frame1.configure(width=738)
 
         self.Message1 = Message(self.Frame1)
         self.Message1.place(relx=0.11, rely=0.4, relheight=0.33,
@@ -103,39 +103,27 @@ class New_Toplevel:
         self.TButton1.place(relx=0.08, rely=0.56, height=68, width=243)
         self.TButton1.configure(takefocus='')
         self.TButton1.configure(text='''Select audio File''')
-        self.TButton1.configure(width=243)
-        self.TButton1.bind('<Button-1>', lambda e: \
-                           main_support.btnSel_LeftClick(e))
+        self.TButton1.configure(width=243);
+        self.var=self.TButton1.bind('<Button-1>',  lambda e:\
+                           main_support.btn.btnSel_LeftClick(e))
+        self.Canvas1 = Canvas(top);print(self.var)
+        self.Canvas1.place(relx=0.5, rely=0.30, relheight=0.5, relwidth=0.43)
+        self.Canvas1.configure(borderwidth="2")
+        self.Canvas1.configure(relief=RIDGE)
+        self.Canvas1.configure(selectbackground="#c4c4c4")
+        self.Canvas1.configure(width=20)
 
-        self.Labelframe1 = LabelFrame(top)
-        self.Labelframe1.place(relx=0.57, rely=0.36, relheight=0.46,
-                               relwidth=0.4)
-        self.Labelframe1.configure(relief=GROOVE)
-        self.Labelframe1.configure(text='''OutPut''')
-        self.Labelframe1.configure(width=240)
-
-        self.Text1 = Text(self.Labelframe1)
-        self.Text1.place(
-            relx=0.08,
-            rely=0.24,
-            relheight=0.57,
-            relwidth=0.82,
-            y=-13,
-            h=13,
-            )
-        self.Text1.configure(background='white')
-        self.Text1.configure(font=font9)
-        self.Text1.insert(END, '''Just a text Widget
-in two lines
-''')
-        self.Text1.configure(selectbackground='#c4c4c4')
-        self.Text1.configure(width=196)
-        self.Text1.configure(wrap=WORD)
+        self.Label1 = Label(self.Canvas1)
+        self.Label1.place(relx=0.53, rely=0.27, relheight=0.61, relwidth=0.43)
+        self._img1 = PhotoImage(file="")
+        self.Label1.configure(image=self._img1)
+        self.Label1.configure(text='''Label''')
+        self.Label1.configure(width=200)
 
         self.BtnExit = Button(top)
         self.BtnExit.place(relx=0.45, rely=0.91, height=29, width=51)
         self.BtnExit.configure(activebackground='#d9d9d9')
-        self.BtnExit.configure(text='''Exit''')
+        self.BtnExit.configure(bg = "red",text='''Exit''')
         self.BtnExit.bind('<Button-1>', lambda e: \
                           main_support.btnExit_LeftClick(e))
 

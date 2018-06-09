@@ -7,12 +7,21 @@
 
 
 import sys
+import platform
+import os
+from os.path import join,getsize,exists
+
 
 try:
     from Tkinter import *
-    from tkinter import filedialog
+    import tkMessageBox
+    import tkFont
+    import tkFileDialog
 except ImportError:
     from tkinter import *
+    from tkinter import messagebox
+    from tkinter import font
+    from tkinter import filedialog
 
 try:
     import ttk
@@ -21,18 +30,25 @@ except ImportError:
     import tkinter.ttk as ttk
     py3 = True
 
+
+
 def btnExit_LeftClick(p1):
     print('unknown_support.btnExit_LeftClick')
     sys.stdout.flush()
     destroy_window()
 
-def btnSel_LeftClick(p1):
-    from tkinter import filedialog
-    print('unknown_support.btnSel_LeftClick')
-    sys.stdout.flush()
-    res = filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("wav files","*.wav"),("all files","*.*")))
-    print(res)
+class btn(object):
 
+    def __init__(self):
+        self.res = None
+
+    @classmethod
+    def btnSel_LeftClick(self,p1):
+        from tkinter import filedialog
+        print('unknown_support.btnSel_LeftClick')
+        sys.stdout.flush()
+        self.res = filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("wav files","*.wav"),("all files","*.*")))
+        print(self.res)
 
 def init(top, gui, *args, **kwargs):
     global w, top_level, root
