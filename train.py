@@ -16,6 +16,13 @@ class Train(object):
 		self.y = pd.read_csv(path_y, engine="python")
 		return self.x, self.y
 
+	#shuffeling the data
+	@classmethod
+	def shuffle(self)
+		self.x = self.x.sample(frac=1).reset_index(drop=True)
+		self.y = self.y.sample(frac=1).reset_index(drop=True)
+		return self.x, self.y
+
 	#split train and test data
 	@classmethod
 	def split_data(self):
@@ -72,6 +79,7 @@ if __name__ == "__main__":
 
 	obj = Train()
 	x, y = obj.load("PreProcessed_Data/input.csv", "PreProcessed_Data/output.csv")
+	x, y = obj.shuffle()
 	x_train, x_test, y_train, y_test = obj.split_data()
 	print(x_train)
 
