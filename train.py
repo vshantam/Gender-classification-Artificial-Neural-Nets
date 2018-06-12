@@ -18,7 +18,7 @@ class Train(object):
 
 	#shuffeling the data
 	@classmethod
-	def shuffle(self)
+	def shuffle(self):
 		self.x = self.x.sample(frac=1).reset_index(drop=True)
 		self.y = self.y.sample(frac=1).reset_index(drop=True)
 		return self.x, self.y
