@@ -8,7 +8,6 @@ This classifiers the gender of the person speaking in the singular audio file us
 
 <b> Male/Female </b>
 
-
 # Project Structure
 
     1.Introduction and Papers.
