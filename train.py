@@ -8,6 +8,7 @@ from keras.layers import Dense, Dropout
 from keras import optimizers
 from sklearn.utils import shuffle
 import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix
 
 
 class Train(object):
@@ -76,8 +77,18 @@ if __name__ == "__main__":
 	plt.xlabel("accuracy")
 
 	plt.plot(history.history['acc'], history.history['loss'], label = "learning curve")
+	
+	plt.legend(loc = "upper right")
 
 	plt.show()
 
 
+	# Predicting the Test set results
+	y_pred = classifier.predict(x_test)
+	y_pred = (y_pred > 0.5)
+	
+	# Making the Confusion Matrix
+	cm = confusion_matrix(y_test, y_pred)
+
+	print(cm)
 
