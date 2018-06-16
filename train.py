@@ -29,7 +29,7 @@ class Train(object):
 	#split train and test data
 	@classmethod
 	def split_data(self):
-		self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.x,self.y, test_size=0.33, random_state=42)
+		self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.x,self.y, test_size=0.33, random_state=0)
 		return self.x_train, self.x_test, self.y_train, self.y_test
 
 
@@ -69,7 +69,15 @@ if __name__ == "__main__":
 	
 	obj.save_trained_model(classifier)
 
-	plt.plot(history.history['loss'], history.history['acc'])
+	plt.title("loss vs accuracy curve")
+
+	plt.ylabel("loss")
+	
+	plt.xlabel("accuracy")
+
+	plt.plot(history.history['acc'], history.history['loss'], label = "learning curve")
 
 	plt.show()
+
+
 
