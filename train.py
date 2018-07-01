@@ -38,7 +38,7 @@ class Train(object):
 	#saving trained model
 	@classmethod
 	def save_trained_model(self, model):
-		model.save_weights("classifier/clf.h5py")
+		model.save("classifier/clf.h5py")
 
 if __name__ == "__main__":
 
