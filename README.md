@@ -165,4 +165,11 @@ References Used :
 
 ![alt_tag](Figures/centroid.png)
 
+# 6. Training
+
+Using Artifcial Neural Network to train the model for classification problem because Neural Nets seems to give the most accurate results in terms of accuracy.
+
+![alt_tag](Figures/ann.png)
+
+
 
