@@ -172,4 +172,21 @@ Using Artifcial Neural Network to train the model for classification problem bec
 ![alt_tag](Figures/ann.png)
 
 
+The description of the architecture i am using for classification are as follows:
+
+	1. 1 input layer , Hidden layer, 1 Output Layer.
+	2. using 12 input attributes and 1 output attributes.
+	3. activation function for input and hidden layer is “relu”.
+	4. activation function for output layer is “sigmoid”.
+	5. using 10 perceptron in each input and hidden layer.
+	6. for optimisation algorthm is used “adam”.
+
+
+
+<B>Q. What is Perceptron?</B>
+
+<B>Ans :</B>
+
+a computer model or computerized machine devised to represent or simulate the ability of the brain to recognize and discriminate.
+
 
