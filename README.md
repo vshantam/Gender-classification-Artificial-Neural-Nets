@@ -673,7 +673,7 @@ Epoch 200/200
 
 </i></b>
 
-<b>7. Testing and Evaluation </b>
+# 7. Testing and Evaluation 
 
 <b>
 Q.What is Confusion Matrix?
@@ -685,8 +685,8 @@ A confusion matrix is a table that is often used to describe the performance of 
 
 For the above Model :
 
-cm =      [[ 478	39]
-	 [[  40		489]]
+	cm =      [[ 478	39]
+		 [[  40		489]]
 
 <b>Accuracy : (correctly predicted class / total testing class) × 100% </b>
 
