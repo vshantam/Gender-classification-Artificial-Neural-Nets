@@ -193,5 +193,75 @@ a computer model or computerized machine devised to represent or simulate the ab
 
 <b>
 Q.What is activation Function?
+
 Ans : 
 </b>
+
+In artificial neural networks, the activation function of a node defines the output of that node given an input or set of inputs. A standard computer chip circuit can be seen as a digital network of activation functions that can be "ON" (1) or "OFF" (0), depending on input.
+
+<b>ReLu activation Function:</b>
+
+A unit employing the rectifier is also called a rectified linear unit (ReLU).
+A smooth approximation to the rectifier is the analytic function
+
+<b> F(x) = Log(1 + exp(x)) </b>
+
+which is called the softplus function
+
+Sigmoid activaton Function:
+
+It is used in neural networks to give logistic neurons real-valued output that is a smooth and bounded function of their total input. It also has the added benefit of having nice derivatives which make learning the weights of a neural network easier.
+
+<b>	F(x) = 1/ (1 + exp(-x)) </b>
+
+
+<b>Graphical Representation</b>
+
+![alt_tag](Figures/sigmoidvsrelu.png)
+
+<b>Implementation</b>
+
+
+## Modules used:
+
+	import numpy as np
+	import pandas as pd
+	import h5py
+	from sklearn.model_selection import train_test_split
+	from keras.models import load_model
+	from keras.models import Sequential
+	from keras.layers import Dense, Dropout
+	from keras import optimizers
+	from sklearn.utils import shuffle
+	import matplotlib.pyplot as plt
+	from sklearn.metrics import confusion_matrix
+
+
+<b>Using python keras module for layer creation and compilation:</b>
+
+	# Initialising the ANN
+	classifier = Sequential()
+	
+	# Adding the input layer and the first hidden layer
+	classifier.add(Dense(output_dim = 10, init = 'uniform', activation = 'relu', input_dim = 12))
+	
+	# Adding the second hidden layer
+	classifier.add(Dense(output_dim = 10, init = 'uniform', activation = 'relu'))
+	
+	# Adding the third hidden layer
+	classifier.add(Dense(output_dim = 10, init = 'uniform', activation = 'relu'))
+	
+	# Adding the output layer
+	classifier.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid'))
+	
+	# Compiling the ANN
+	classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+	
+	# Fitting the ANN to the Training set
+	history = classifier.fit(x_train, y_train, batch_size = 20, nb_epoch = 200)
+
+## Learnng Curve:
+
+![alt_tag](Figures/learning_curve.png)
+
+
