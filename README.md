@@ -189,4 +189,9 @@ The description of the architecture i am using for classification are as follows
 
 a computer model or computerized machine devised to represent or simulate the ability of the brain to recognize and discriminate.
 
+![alt_tag](Figures/sl_perceptron.png)
 
+<b>
+Q.What is activation Function?
+Ans : 
+</b>
