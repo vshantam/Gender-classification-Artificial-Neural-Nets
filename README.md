@@ -217,7 +217,7 @@ It is used in neural networks to give logistic neurons real-valued output that i
 
 <b>Graphical Representation</b>
 
-![alt_tag](Figures/sigmoidvsrelu.png)
+![alt_tag](Figures/sigmoidvsrelu.jpeg)
 
 <b>Implementation</b>
 
@@ -263,5 +263,8 @@ It is used in neural networks to give logistic neurons real-valued output that i
 ## Learnng Curve:
 
 ![alt_tag](Figures/learning_curve.png)
+
+
+
 
 
