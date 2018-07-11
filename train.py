@@ -58,7 +58,10 @@ if __name__ == "__main__":
 	#rms = keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
 	#adag = keras.optimizers.Adagrad(lr=0.01, epsilon=None, decay=0.0)
 	#adad = keras.optimizers.Adadelta(lr=1.0, rho=0.95, epsilon=None, decay=0.0)
-	adam = keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
+	#adam = keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
+	#adamax = keras.optimizers.Adamax(lr=0.002, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
+	nadam = keras.optimizers.Nadam(lr=0.002, beta_1=0.9, beta_2=0.999, epsilon=None, schedule_decay=0.004)
+
 
 	# Adding the input layer and the first hidden layer
 	classifier.add(Dense(output_dim = 10, init = 'uniform' , activation = 'relu', input_dim = 12))
@@ -74,7 +77,7 @@ if __name__ == "__main__":
 	classifier.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid'))
 
 	# Compiling the ANN
-	classifier.compile(optimizer = adam, loss = 'binary_crossentropy', metrics = ['accuracy'])
+	classifier.compile(optimizer = nadam, loss = 'binary_crossentropy', metrics = ['accuracy'])
 	
 	# Fitting the ANN to the Training set
 	history = classifier.fit(x_train, y_train, batch_size = 20, nb_epoch = 200)
