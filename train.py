@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 import keras.initializers
 from keras import optimizers
+from keras import metrics
 
 class Train(object):
 
@@ -77,7 +78,7 @@ if __name__ == "__main__":
 	classifier.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid'))
 
 	# Compiling the ANN
-	classifier.compile(optimizer = nadam, loss = 'binary_crossentropy', metrics = ['accuracy'])
+	classifier.compile(optimizer = nadam, loss = 'mean_squared_error', metrics = ['binary_accuracy','accuracy','categorical_accuracy','sparse_categorical_accuracy'])
 	
 	# Fitting the ANN to the Training set
 	history = classifier.fit(x_train, y_train, batch_size = 20, nb_epoch = 200)
