@@ -37,7 +37,7 @@ if __name__ == '__main__':
 		classifier = load_model("classifier/clf.h5py")
 		res = (classifier.predict(dataset.iloc[:,:-1].values[resp].reshape(-1,1).T))
 		print(res)
-		if res >= .22 :
+		if res > 0.0002 :
 			print("Predicted Gender is : {}".format("Female"))
 		else:
 			print("Predicted Gender is : Male")
