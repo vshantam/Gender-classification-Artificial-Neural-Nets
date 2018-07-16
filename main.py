@@ -14,6 +14,7 @@ import h5py
 from keras.models import Sequential
 from keras.models import load_model
 from keras.layers import Dense
+from sklearn.preprocessing import StandardScaler
 
 
 if __name__ == '__main__':
@@ -35,9 +36,11 @@ if __name__ == '__main__':
 		resp = int(input("Please enter the number:"))
 		print(dataset.iloc[:,:-1].values[resp])
 		classifier = load_model("classifier/clf.h5py")
-		res = (classifier.predict(dataset.iloc[:,:-1].values[resp].reshape(-1,1).T))
+		scaler = StandardScaler()
+		datas = (dataset.iloc[:,:-1].values[resp].reshape(-1,1).T)
+		res = (classifier.predict(datas))
 		print(res)
-		if res > 0.0002 :
+		if res > 4.3*10**-6 :
 			print("Predicted Gender is : {}".format("Female"))
 		else:
 			print("Predicted Gender is : Male")

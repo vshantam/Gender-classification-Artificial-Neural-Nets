@@ -81,7 +81,15 @@ if __name__ == "__main__":
 	classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 	
 	# Fitting the ANN to the Training set
-	history = classifier.fit(x_train, y_train, batch_size = 20, nb_epoch = 200)
+	history = classifier.fit(x_train, y_train, batch_size = 5, nb_epoch = 600)
+
+	history_acc_loss = ([history.history['acc'],history.history['loss']])
+
+	history_acc_loss = np.array(history_acc_loss)
+
+	history_acc_loss = history_acc_loss.T
+
+	np.savetxt("history_acc_loss.dat",history_acc_loss, delimiter=",")
 	
 	obj.save_trained_model(classifier)
 
