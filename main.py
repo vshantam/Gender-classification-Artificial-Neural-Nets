@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
 	#Ascii art 
 	init(strip=not sys.stdout.isatty())
-	cprint(figlet_format('G D S!', font='starwars'), 'blue', 'on_red', attrs=['bold'])
+	cprint(figlet_format('G D S!', font='isometric3'), 'blue', 'on_red', attrs=['bold'])
 	print("Gender Detection System !")
 	print()
 	print(termcolor.colored("Here are the list of extracted features from the audio files available in the database!\n\n","red","on_white"))
