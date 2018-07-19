@@ -27,6 +27,8 @@ if __name__ == '__main__':
 
 	os.system("reset")
 
+	os.system("pip3 install -r requirements.txt")
+
 	print(__doc__)
 
 	#Ascii art 
