@@ -25,9 +25,8 @@ def prRed(skk):
 
 if __name__ == '__main__':
 
-	os.system("reset")
-
 	os.system("pip3 install -r requirements.txt")
+	os.system("reset")
 
 	print(__doc__)
 
