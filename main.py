@@ -25,8 +25,12 @@ def prRed(skk):
 
 if __name__ == '__main__':
 
-	os.system("pip3 install -r requirements.txt")
-	os.system("reset")
+	try:
+
+		os.system("pip3 install -r requirements.txt")
+		os.system("reset")
+	except exception as e:
+		print("there is a missing package .\n Error Occured :{}".format(str(e)))
 
 	print(__doc__)
 
@@ -52,6 +56,7 @@ if __name__ == '__main__':
 		res = (classifier.predict(datas))
 		print(res)
 		if res > 4.3*10**-6 :
+
 			print("Predicted Gender is : {}".format("Female"))
 		else:
 			print("Predicted Gender is : Male")
