@@ -782,6 +782,6 @@ The list of loss functions are :
 
 The below plot will be of help to vizualise and sort out the best function to minimize the losses.
 
-![alt_tag](Figures/optimizer_3.png)
+![alt_tag](Figures/optimiser_3.png)
 
 
