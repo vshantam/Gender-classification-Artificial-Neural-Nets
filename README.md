@@ -786,11 +786,8 @@ The below plot will be of help to vizualise and sort out the best function to mi
 
 <b>Observation result:</b>
 
-From the above plot it is clear the <b>Mean Squarred Error</b> and </b>Mean Squared Logrithmic Error</b> both will be useful but depends of training accuracy.
+From the above plot it is clear the <b>Mean Squarred Error</b> and <b>Mean Squared Logrithmic Error</b> both will be useful but depends of training accuracy.
 
-<b>Observation result:</b>
-
-From the above plot it is clear the Mean Squarred Error and Mean Squared Logrithmic Error both will be useful but depends of training accuracy.
 
 ## 8.3 Metric
 
@@ -815,7 +812,7 @@ Keras defination to set metric function :
 
 Bar chart will help in visualization better in this case :
 
-![alt_tag](optimizer_4.png)
+![alt_tag](Figures/optimizer_4.png)
 
 <b>Observation result:</b>
 
