@@ -784,4 +784,42 @@ The below plot will be of help to vizualise and sort out the best function to mi
 
 ![alt_tag](Figures/optimiser_3.png)
 
+<b>Observation result:</b>
+
+From the above plot it is clear the <b>Mean Squarred Error</b> and </b>Mean Squared Logrithmic Error</b> both will be useful but depends of training accuracy.
+
+<b>Observation result:</b>
+
+From the above plot it is clear the Mean Squarred Error and Mean Squared Logrithmic Error both will be useful but depends of training accuracy.
+
+## 8.3 Metric
+
+A metric is a function that is used to judge the performance of your model. Metric functions are to be supplied in the metrics parameter when a model is compiled.
+
+A list of metrics. For any classification problem you will want to set this to metrics=['accuracy']. A metric could be the string identifier of an existing metric or a custom metric function.
+
+The list of metric function used to test are as follows :
+
+	1. Accuracy.
+	2. Binary Accuracy.
+	3. Categorical Accuracy.
+	4. Sparse Categorical Accuracy.
+
+Keras defination to set metric function :
+
+	from keras import metrics
+	
+	model.compile(loss='mean_squared_error',
+	              optimizer='sgd',
+	              metrics=[metrics.mae, metrics.categorical_accuracy])
+
+Bar chart will help in visualization better in this case :
+
+![alt_tag](optimizer_4.png)
+
+<b>Observation result:</b>
+
+It is clearly observable that <b>categorical accuracy</b> and <b>binary accuracy</b> are the most dominant one , hence giving the better results.
+
+
 
