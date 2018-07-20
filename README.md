@@ -725,7 +725,7 @@ There are 3 type of parameter tuning that i performed which are as follows
 2. Loss
 3. Metrics
 
-8.1 Optimizers
+## 8.1 Optimizers
 
 An optimizer is one of the two arguments required for compiling a Keras model.
 
@@ -764,5 +764,24 @@ Scatterplot 1:
 
 By the above charts it is easy to sort out the reliable algorithms which are: <b>adamax,adam,nadam,rmsprop</b> amongs them the best suitable algorithm that i find useful is :
 <b>adam</b> ( because of higher accuracy with acceptable loss and rmsprop is better for RNN)
+
+## 8.2 Loss
+
+A loss function. This is the objective that the model will try to minimize. It can be the string identifier of an existing loss function (such as categorical_crossentropy or mse), or it can be an objective function. 
+
+The list of loss functions are :
+
+	1. Binary Crossentropy .
+	2. Mean Squared Error.
+	3. Mean Absolute Error.
+	4. Mean Squared Logrithmic error.
+	5. Squared Hing.
+	6. Hinge.
+	7. Poision.
+	8. Cosine Proximity.
+
+The below plot will be of help to vizualise and sort out the best function to minimize the losses.
+
+![alt_tag](Figures/optimizer_3.png)
 
 
