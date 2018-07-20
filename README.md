@@ -715,4 +715,54 @@ For the above Model :
 <b>Note :  As our F1-Score is more than  90% that means our model is fitted correctly as which gives better testng testing results.</b>
  
 
+# 8. Parameter Tuning
+
+Parameter tuning is an important part in machine learning or deep learning , it helps to improve the accuracy and leads to better results with less loss of data and it is important that classifier creates less loss in classification because more loss may leads to misclassification even when the classification accuracy is high enough.
+
+There are 3 type of parameter tuning that i performed which are as follows 
+
+1. Optimizers
+2. Loss
+3. Metrics
+
+8.1 Optimizers
+
+An optimizer is one of the two arguments required for compiling a Keras model.
+
+You can either instantiate an optimizer before passing it to model.compile() , as in the above example, or you can call it by its name. In the latter case, the default parameters for the optimizer will be used.
+The  types of optimization algorithms are as folllows:
+
+	1.SGD:    keras.optimizers.SGD(lr=0.01, momentum=0.0, decay=0.0,nesterov=False)
+
+	2.RMSPROP: keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
+
+	3.ADAGRAD : keras.optimizers.Adagrad(lr=0.01, epsilon=None, decay=0.0)
+
+	4.ADADELTA : keras.optimizers.Adadelta(lr=1.0, rho=0.95, epsilon=None, decay=0.0)
+
+	5.ADAM : keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
+
+	6.ADAMAX : keras.optimizers.Adamax(lr=0.002, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
+
+	7.NADAM : keras.optimizers.Nadam(lr=0.002, beta_1=0.9, beta_2=0.999, epsilon=None, schedule_decay=0.004)
+
+After tuning the different optimization algorithms , i have plotted the scatterplot to vizualise better for selection :
+
+Scatterplot 1:
+
+
+							x-axis : accuracy
+							y-axis : Loss
+
+![alt_tag](Figures/optimizer_1.png)
+
+![alt_tag](Figures/optimizer_2.png)
+
+<b>Note : the above scatterplot is zoomed section of complete scatterplot.</b>
+
+<b>Observation result:</b>
+
+By the above charts it is easy to sort out the reliable algorithms which are: <b>adamax,adam,nadam,rmsprop</b> amongs them the best suitable algorithm that i find useful is :
+<b>adam</b> ( because of higher accuracy with acceptable loss and rmsprop is better for RNN)
+
 
