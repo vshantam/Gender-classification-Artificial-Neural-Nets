@@ -841,6 +841,6 @@ snapshots:
 
 	interface with correct prediction female
 
-![alt_tag](Figures/nterface_cp_female.png)
+![alt_tag](Figures/interface_cp_female.png)
 
 
