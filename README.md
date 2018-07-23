@@ -819,4 +819,12 @@ Bar chart will help in visualization better in this case :
 It is clearly observable that <b>categorical accuracy</b> and <b>binary accuracy</b> are the most dominant one , hence giving the better results.
 
 
+# 9 New Predictions
+
+Now , we have a trained clasifier which can be used to predict the gender of audio files which is new (unseen).The trained classifier is saved in the folder called classifer.
+
+ i am using a simple terminal based interface to use the pre trained classfier to predict the new values .
+
+snapshots:
+
 
