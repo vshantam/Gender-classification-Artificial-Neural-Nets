@@ -827,6 +827,10 @@ Now , we have a trained clasifier which can be used to predict the gender of aud
 
 snapshots:
 
+	Main Interface
+
+![alt_tag](Figures/interface.png)
+
 	interface with correct prediction male
 
 ![alt_tag](Figures/interface_cp_male.png)
