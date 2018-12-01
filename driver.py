@@ -78,7 +78,7 @@ class Extract(object):
 	#centriod frequency
 	@classmethod
 	def spectral_centroid(self, x, frequency):
-		freqs = np.abs(np.fft.fftfreq(length, 1.0/samplerate)[:length//2+1]) # positive frequencies		
+		freqs = np.abs(self.fft(length, 1.0/samplerate)[:length//2+1]) # positive frequencies	np.fft.fftfreq	
 		return np.sum(x*frequency) / np.sum(data) # return weighted mean
 
 	#calculate spectral flatness
@@ -123,7 +123,7 @@ class Extract(object):
 		secs = N / float(samplerate)
 		Ts = 1.0/samplerate # sampling interval in time
 		t = scipy.arange(0, secs, Ts) # time vector as scipy arange field / numpy.ndarray
-		freqs = scipy.fftpack.fftfreq(data.size, t[1]-t[0])
+		freqs = self.fft(data.size, t[1]-t[0])  #scipy.fftpack.fftfreq
 	
 		return 	(freqs)
 
@@ -160,4 +160,5 @@ if __name__ == '__main__':
 	#creating an object
 	obj = Extract()
 	obj.load_data()
+
 
